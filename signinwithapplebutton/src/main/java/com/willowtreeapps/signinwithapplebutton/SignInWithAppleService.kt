@@ -78,7 +78,7 @@ class SignInWithAppleService(
                         appendQueryParameter("redirect_uri", configuration.redirectUri)
                         appendQueryParameter("scope", configuration.scope)
                         appendQueryParameter("state", state)
-                        appendQueryParameter("response_mode", "fragment")
+                        appendQueryParameter("response_mode", "form_post")
                     }
                     .build()
                     .toString()
