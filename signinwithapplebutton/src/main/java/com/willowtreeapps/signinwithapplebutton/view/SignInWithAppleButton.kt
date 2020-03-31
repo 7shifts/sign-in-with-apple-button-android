@@ -26,7 +26,6 @@ class SignInWithAppleButton @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.sign_in_with_apple_button, this, true)
     }
 
-    private val imageView: ImageView = findViewById(R.id.imageView)
     private val textView: TextView = findViewById(R.id.textView)
 
     init {
@@ -60,14 +59,14 @@ class SignInWithAppleButton @JvmOverloads constructor(
         (background as? GradientDrawable)?.cornerRadius = cornerRadius
 
         if (icon != -1) {
-            imageView.setImageResource(icon)
+            textView.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, 0, 0, 0)
 
             if (iconSize != -1) {
-                imageView.layoutParams.width = iconSize
-                imageView.layoutParams.height = iconSize
+                textView.layoutParams.width = iconSize
+                textView.layoutParams.height = iconSize
             }
         } else {
-            imageView.visibility = View.GONE
+            textView.visibility = View.GONE
         }
 
         textView.setTextColor(textColor)
