@@ -29,7 +29,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="@dimen/sign_in_with_apple_button_textView_contentSpacing"
+        android:drawablePadding="24dp"
         android:duplicateParentState="true"
         android:ellipsize="end"
         android:maxLines="1"
