@@ -3,23 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="48dp"
-    android:layout_gravity="center"
     android:duplicateParentState="true">
 
-    <!-- Button icon -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:contentDescription="@string/sign_in_with_apple_button_iconContentDescription"
-        android:src="@drawable/sign_in_with_apple_button_icon_black" />
-
-    <!-- Button text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/sign_in_with_apple_button_icon_black"
+        android:drawablePadding="24dp"
+        android:layout_gravity="center"
         android:maxLines="1"
         tools:text="@string/sign_in_with_apple_button_signInWithApple" />
 
