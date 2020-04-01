@@ -38,8 +38,9 @@ internal class SignInWebViewClient(
             url.toString().contains(attempt.redirectUri) -> {
                 Log.d(SIGN_IN_WITH_APPLE_LOG_TAG, "Web view was forwarded to redirect URI")
 
-                val idToken = url.getQueryParameter("id_token")
-                val stateParameter = url.getQueryParameter("state")
+                val queryUri = Uri.parse("${url.scheme}${url.encodedSchemeSpecificPart}?${url.fragment}")
+                val idToken = queryUri.getQueryParameter("id_token")
+                val stateParameter = queryUri.getQueryParameter("state")
 
                 when {
                     idToken == null -> {
