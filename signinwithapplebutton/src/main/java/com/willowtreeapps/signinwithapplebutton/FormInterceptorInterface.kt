@@ -50,7 +50,7 @@ internal class FormInterceptorInterface(
                     form.elements[i].value + 
                     '${FORM_DATA_SEPARATOR}'
             }
-            ${NAME}.processFormData(values);
+            window.${NAME}.processFormData(values);
         }
         
         for(var i=0 ; i< document.forms.length ; i++){
