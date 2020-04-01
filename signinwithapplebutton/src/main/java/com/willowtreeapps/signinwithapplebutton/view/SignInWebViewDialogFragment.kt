@@ -61,9 +61,10 @@ internal class SignInWebViewDialogFragment : DialogFragment() {
             }
         }
 
-        webView.addJavascriptInterface(FormInterceptorInterface(authenticationAttempt.state, ::onCallback), FormInterceptorInterface.NAME)
-
-        webView.webViewClient = UrlInterceptorWebViewClient(authenticationAttempt.redirectUri, FormInterceptorInterface.JS_TO_INJECT)
+        webView.webViewClient = SignInWebViewClient(authenticationAttempt, ::onCallback)
+//        webView.addJavascriptInterface(FormInterceptorInterface(authenticationAttempt.state, ::onCallback), FormInterceptorInterface.NAME)
+//
+//        webView.webViewClient = UrlInterceptorWebViewClient(authenticationAttempt.redirectUri, FormInterceptorInterface.JS_TO_INJECT)
 
         if (savedInstanceState != null) {
             savedInstanceState.getBundle(WEB_VIEW_KEY)?.run {
