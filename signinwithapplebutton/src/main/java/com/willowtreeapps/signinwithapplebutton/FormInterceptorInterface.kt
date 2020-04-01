@@ -40,6 +40,7 @@ internal class FormInterceptorInterface(
          * data can be analyzed in the app's context.
          */
         val JS_TO_INJECT = """
+            debugger;
         function parseForm(form){
             var values = '';
             for(var i=0 ; i< form.elements.length; i++){
