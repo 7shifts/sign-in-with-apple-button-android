@@ -30,7 +30,6 @@ public class SampleJavaActivity extends AppCompatActivity {
         SignInWithAppleConfiguration configuration = new SignInWithAppleConfiguration.Builder()
                 .clientId("com.your.client.id.here")
                 .redirectUri("https://your-redirect-uri.com/callback")
-                .scope("email name")
                 .build();
 
         SignInWithAppleCallback callback = new SignInWithAppleCallback() {

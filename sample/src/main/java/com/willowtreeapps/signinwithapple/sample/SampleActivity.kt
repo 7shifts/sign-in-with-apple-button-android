@@ -22,8 +22,7 @@ class SampleActivity : AppCompatActivity() {
         // Replace clientId and redirectUri with your own values.
         val configuration = SignInWithAppleConfiguration(
             clientId = "com.your.client.id.here",
-            redirectUri = "https://your-redirect-uri.com/callback",
-            scope = "email name"
+            redirectUri = "https://your-redirect-uri.com/callback"
         )
 
         val callback: (SignInWithAppleResult) -> Unit = { result ->
