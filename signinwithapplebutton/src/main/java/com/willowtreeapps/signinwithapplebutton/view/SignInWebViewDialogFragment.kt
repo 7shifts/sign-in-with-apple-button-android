@@ -11,8 +11,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.webkit.WebView
 import androidx.fragment.app.DialogFragment
 import com.willowtreeapps.signinwithapplebutton.*
-import com.willowtreeapps.signinwithapplebutton.FormInterceptorInterface
-import com.willowtreeapps.signinwithapplebutton.UrlInterceptorWebViewClient
 import com.willowtreeapps.signinwithapplebutton.view.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -62,9 +60,6 @@ internal class SignInWebViewDialogFragment : DialogFragment() {
         }
 
         webView.webViewClient = SignInWebViewClient(authenticationAttempt, ::onCallback)
-//        webView.addJavascriptInterface(FormInterceptorInterface(authenticationAttempt.state, ::onCallback), FormInterceptorInterface.NAME)
-//
-//        webView.webViewClient = UrlInterceptorWebViewClient(authenticationAttempt.redirectUri, FormInterceptorInterface.JS_TO_INJECT)
 
         if (savedInstanceState != null) {
             savedInstanceState.getBundle(WEB_VIEW_KEY)?.run {
