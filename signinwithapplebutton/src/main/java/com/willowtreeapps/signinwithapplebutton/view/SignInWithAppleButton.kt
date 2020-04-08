@@ -58,6 +58,10 @@ class SignInWithAppleButton @JvmOverloads constructor(
         this.background = background?.mutate()
         (background as? GradientDrawable)?.cornerRadius = cornerRadius
 
+        if (icon != -1) {
+            textView.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, 0, 0, 0)
+        }
+
         textView.setTextColor(textColor)
 
         if (textSize != -1) {
