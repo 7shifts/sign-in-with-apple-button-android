@@ -60,6 +60,13 @@ class SignInWithAppleButton @JvmOverloads constructor(
 
         if (icon != -1) {
             textView.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, 0, 0, 0)
+
+            if (iconSize != -1) {
+                textView.layoutParams.width = iconSize
+                textView.layoutParams.height = iconSize
+            }
+        } else {
+            textView.visibility = View.GONE
         }
 
         textView.setTextColor(textColor)
