@@ -44,7 +44,7 @@ internal class SignInWebViewClient(
 
                 when {
                     idToken == null -> {
-                        callback(SignInWithAppleResult.Failure(IllegalArgumentException("code not returned")))
+                        callback(SignInWithAppleResult.Failure(IllegalArgumentException("id token not returned")))
                     }
                     stateParameter != attempt.state -> {
                         callback(SignInWithAppleResult.Failure(IllegalArgumentException("state does not match")))
