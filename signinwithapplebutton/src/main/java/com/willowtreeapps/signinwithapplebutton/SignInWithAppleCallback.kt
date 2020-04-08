@@ -5,8 +5,6 @@ interface SignInWithAppleCallback {
     fun onSignInWithAppleSuccess(authorizationCode: String)
 
     fun onSignInWithAppleFailure(error: Throwable)
-
-    fun onSignInWithAppleCancel()
 }
 
 internal fun SignInWithAppleCallback.toFunction(): (SignInWithAppleResult) -> Unit =
@@ -14,6 +12,5 @@ internal fun SignInWithAppleCallback.toFunction(): (SignInWithAppleResult) -> Un
         when (result) {
             is SignInWithAppleResult.Success -> onSignInWithAppleSuccess(result.idToken)
             is SignInWithAppleResult.Failure -> onSignInWithAppleFailure(result.error)
-            is SignInWithAppleResult.Cancel -> onSignInWithAppleCancel()
         }
     }

@@ -42,11 +42,6 @@ public class SampleJavaActivity extends AppCompatActivity {
             public void onSignInWithAppleFailure(@NonNull Throwable error) {
                 Log.d("SAMPLE_APP", "Received error from Apple Sign In " + error.getMessage());
             }
-
-            @Override
-            public void onSignInWithAppleCancel() {
-                Log.d("SAMPLE_APP", "User canceled Apple Sign In");
-            }
         };
 
         signInWithAppleButtonBlack.setUpSignInWithAppleOnClick(getSupportFragmentManager(), configuration, callback);
