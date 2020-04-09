@@ -22,14 +22,13 @@ class SampleActivity : AppCompatActivity() {
         // Replace clientId and redirectUri with your own values.
         val configuration = SignInWithAppleConfiguration(
             clientId = "com.your.client.id.here",
-            redirectUri = "https://your-redirect-uri.com/callback",
-            scope = "email name"
+            redirectUri = "https://your-redirect-uri.com/callback"
         )
 
         val callback: (SignInWithAppleResult) -> Unit = { result ->
             when (result) {
                 is SignInWithAppleResult.Success -> {
-                    Toast.makeText(this, result.authorizationCode, LENGTH_SHORT).show()
+                    Toast.makeText(this, result.idToken, LENGTH_SHORT).show()
                 }
                 is SignInWithAppleResult.Failure -> {
                     Log.d("SAMPLE_APP", "Received error from Apple Sign In ${result.error.message}")

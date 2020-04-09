@@ -30,7 +30,6 @@ public class SampleJavaActivity extends AppCompatActivity {
         SignInWithAppleConfiguration configuration = new SignInWithAppleConfiguration.Builder()
                 .clientId("com.your.client.id.here")
                 .redirectUri("https://your-redirect-uri.com/callback")
-                .scope("email name")
                 .build();
 
         SignInWithAppleCallback callback = new SignInWithAppleCallback() {
@@ -42,11 +41,6 @@ public class SampleJavaActivity extends AppCompatActivity {
             @Override
             public void onSignInWithAppleFailure(@NonNull Throwable error) {
                 Log.d("SAMPLE_APP", "Received error from Apple Sign In " + error.getMessage());
-            }
-
-            @Override
-            public void onSignInWithAppleCancel() {
-                Log.d("SAMPLE_APP", "User canceled Apple Sign In");
             }
         };
 
