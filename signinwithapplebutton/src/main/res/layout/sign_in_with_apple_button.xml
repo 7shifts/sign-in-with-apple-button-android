@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/proximanova_semibold"
         android:textSize="14sp"
-        app:drawableStartCompat="@drawable/sign_in_with_apple_button_icon_black"
+        app:drawableStartCompat="@drawable/ic_apple_logo_white"
         android:drawablePadding="24dp"
         android:layout_gravity="center"
         android:gravity="center"
