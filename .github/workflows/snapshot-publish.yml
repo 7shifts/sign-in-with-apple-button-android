@@ -1,0 +1,24 @@
+name: Snapshot Artifact Publish
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Publish to Artifactory
+        run: ./gradlew artifactoryPublish
+        env:
+          ANDROID_SDK_ROOT: /Users/7shiftsmobile/Library/Android/sdk
+          ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}

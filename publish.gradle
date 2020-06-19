@@ -1,87 +1,53 @@
-apply plugin: 'signing'
-apply plugin: 'digital.wup.android-maven-publish'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
 
-group = 'com.willowtreeapps'
-version = '0.4'
-
-def siteUrl = 'https://github.com/willowtreeapps/sign-in-with-apple-button-android'
-def gitUrl = 'https://github.com/willowtreeapps/sign-in-with-apple-button-android.git'
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from(android.sourceSets.main.java.srcDirs)
-}
-
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    failOnError = false
-}
-
-task javadocsJar(type: Jar) {
-    classifier = 'javadoc'
-    from(androidJavadocs)
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
 }
 
 publishing {
     publications {
-        mavenAar(MavenPublication) {
-            from components.android
-            artifact sourcesJar
-            artifact javadocsJar
+        maven(MavenPublication) {
+            groupId 'com.7shifts.android'
+            artifactId 'api'
+            version gitBranch()
 
-            pom {
-                name = 'Sign In with Apple Button for Android'
-                description = 'Add a Sign In button for Sign In With Apple'
-                url = siteUrl
-
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/licenses/mit-license.php'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'MattCorbett488'
-                        name = 'Matt Corbett'
-                    }
-                }
-
-                scm {
-                    url = siteUrl
-                    connection = gitUrl
-                    developerConnection = gitUrl
-                }
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            switch (project.findProperty('releaseMode')) {
-                case "release":
-                    url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-                    break
-                case "snapshot":
-                    url = 'https://oss.sonatype.org/content/repositories/snapshots'
-                    version = version + "-SNAPSHOT"
-                    break
-                default:
-                    url = 'https://invalid'
-                    break
-            }
-
-            credentials {
-                username project.findProperty('sonatype.username')
-                password project.findProperty('sonatype.password')
-            }
+            artifact("$buildDir/outputs/aar/${artifactId}.aar")
         }
     }
 }
 
-if (project.hasProperty("signing.keyId")) {
-    signing {
-        sign publishing.publications.mavenAar
+artifactory {
+    contextUrl = 'http://192.168.10.69:8081/artifactory'
+
+    def artifactory_user = System.env.ARTIFACTORY_USER
+    def artifactory_password = System.env.ARTIFACTORY_PASSWORD
+
+    publish {
+        repository {
+            repoKey = 'gradle-dev-local'
+            username = artifactory_user
+            password = artifactory_password
+        }
+        defaults {
+            publications('maven')
+            publishArtifacts = true
+            publishPom = true
+            publishBuildInfo = true
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'gradle-dev'
+            username = artifactory_user
+            password = artifactory_password
+        }
     }
 }
+
+artifactoryPublish.dependsOn assemble
