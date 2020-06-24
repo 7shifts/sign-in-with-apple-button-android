@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="260dp"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:duplicateParentState="true">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proximanova_semibold"
         android:textSize="14sp"
-        android:drawableStart="@drawable/sign_in_with_apple_button_icon_black"
+        app:drawableStartCompat="@drawable/ic_apple_logo_white"
         android:drawablePadding="24dp"
         android:layout_gravity="center"
         android:gravity="center"
