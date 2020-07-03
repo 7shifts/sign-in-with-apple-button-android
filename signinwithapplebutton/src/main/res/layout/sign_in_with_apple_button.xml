@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:minHeight="@dimen/sign_in_with_apple_button_minimumHeight" android:paddingStart="@dimen/sign_in_with_apple_button_horizontalPadding"
-             android:paddingEnd="@dimen/sign_in_with_apple_button_horizontalPadding"
->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:duplicateParentState="true">
 
-    <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:text="hello"
-            android:drawablePadding="@dimen/sign_in_with_apple_button_textView_contentSpacing" android:maxLines="1"
-            android:ellipsize="end"/>
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proximanova_semibold"
+        android:textSize="14sp"
+        app:drawableStartCompat="@drawable/ic_apple_logo_white"
+        android:drawablePadding="24dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:maxLines="1"
+        tools:text="@string/sign_in_with_apple_button_signInWithApple" />
+
+</LinearLayout>
